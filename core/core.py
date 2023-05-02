@@ -107,7 +107,9 @@ def generate_time_table(input_file: str,
                 # 处理数据
                 names = [s.strip() for s in df['姓名'].tolist() if s]
                 is_yfs = [s.strip() for s in df['研发/辅助'].tolist() if s]
-                rds = [str(s).strip() for s in df['RD'].tolist() if s]
+                # 替换中文的逗号为英文的逗号
+                rds = [str(s).strip().replace('，', ',')
+                       for s in df['RD'].tolist() if s]
                 # 当前月份的天数
                 if year != 0:
                     # 自动获取对于月份的天数
