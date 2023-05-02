@@ -31,6 +31,15 @@ def check_column_names(df: pd.DataFrame, expected_columns: List[str]):
         raise ValueError(f"表格中缺少以下列：{','.join(not_found)}")
 
 
+def is_file_exists(file_path):
+    """
+    检查文件是否存在
+    :param file_path: 文件的完整路径
+    :return: True(如果文件存在)或False(如果文件不存在)
+    """
+    return os.path.exists(file_path)
+
+
 def get_excel_sheets(input_file: Union[str, None] = None, sheet_index: Union[int, None] = None) -> Union[str, List[str]]:
     """
     获取传入excel表的所有sheet_name或指定位置的sheet_name
